@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}") = "TeamRally", "TeamRally\TeamRally.iceproj", "{B300C191-9DE3-4CFE-9807-9AB5FCF34C8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B300C191-9DE3-4CFE-9807-9AB5FCF34C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B300C191-9DE3-4CFE-9807-9AB5FCF34C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B300C191-9DE3-4CFE-9807-9AB5FCF34C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B300C191-9DE3-4CFE-9807-9AB5FCF34C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
