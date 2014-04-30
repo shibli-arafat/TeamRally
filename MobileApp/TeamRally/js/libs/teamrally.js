@@ -20,14 +20,18 @@ teamRallyNS.Rally.prototype = function () {
 
     drawChart = function () {
 //        var _self = this;
-        var options = {
-            title: 'My Daily Activities',
-            colors: ['#FF0000', '#FE642E', '#FE9A2E', '#FACC2E', '#3ADF00'],
-            is3D: true
-        };
+        
 
         for (var i = 0; i < rally.Stories.length; i++) {
             var story = rally.Stories[i];
+
+            var options = {
+                title: story.title,
+                colors: ['#FF0000', '#FE642E', '#FE9A2E', '#FACC2E', '#3ADF00'],
+                legend: { position: 'bottom' } 
+
+            };
+
             var chart = new google.visualization.PieChart(document.getElementById('chartId' + story.id));
             var data = google.visualization.arrayToDataTable(story.Tasks);
 
