@@ -58,23 +58,24 @@ teamRallyNS.Rally.prototype = function () {
     },
 
     drawChart = function () {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work', 11],
-          ['Eat', 2],
-          ['Commute', 2],
-          ['Watch TV', 2],
-          ['Sleep', 7]
-        ]);
+//        var _self = this;
+        
 
-        var options = {
-            title: 'My Daily Activities'
-        };
+        for (var i = 0; i < rally.Stories.length; i++) {
+            var story = rally.Stories[i];
 
-        var allChartContent = $("div[id^='chartId']");
+            var options = {
+                title: story.title,
+                colors: ['#FF0000', '#FE642E', '#FE9A2E', '#FACC2E', '#3ADF00'],
+                legend: { position: 'bottom' } 
 
-        for (var i = 0; i < allChartContent.length; i++) {
-            var chart = new google.visualization.PieChart(document.getElementById(allChartContent[i].id));
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartId' + story.id));
+            var data = google.visualization.arrayToDataTable(story.Tasks);
+
+          
+
             chart.draw(data, options);
         }
     }

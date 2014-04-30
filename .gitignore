@@ -3,7 +3,7 @@
 *.pdb
 *.user
 *.suo
-*.log
+debug.log
 obj/
 bin/
 
