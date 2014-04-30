@@ -8,8 +8,12 @@ var stories = [
     ReadyToTestTasks: 4,
     Done: 5,
     Tasks: [
-      { name: "English" },
-      { name: "French" }
+      ['Task', 'Hours per Day'],
+      ['Work', 11],
+      ['Eat', 2],
+      ['Commute', 2],
+      ['Watch TV', 2],
+      ['Sleep', 7]
     ]
 
 },
@@ -22,8 +26,12 @@ var stories = [
     ReadyToTestTasks: 4,
     Done: 5,
     Tasks: [
-      { name: "English" },
-      { name: "French" }
+       ['Task', 'Hours per Day'],
+       ['Not Done', 11],
+       ['In Progess', 2],
+       ['Review', 2],
+       ['Watch TV', 2],
+       ['Sleep', 7]
     ]
 
 },
@@ -36,8 +44,12 @@ var stories = [
     ReadyToTestTasks: 4,
     Done: 5,
     Tasks: [
-      { name: "English" },
-      { name: "French" }
+      ['Task', 'Hours per Day'],
+      ['Work', 11],
+      ['Eat', 2],
+      ['Commute', 2],
+      ['Watch TV', 2],
+      ['Sleep', 7]
     ]
 
 }

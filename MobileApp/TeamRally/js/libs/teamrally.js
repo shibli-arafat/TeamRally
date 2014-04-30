@@ -20,22 +20,19 @@ teamRallyNS.Rally.prototype = function () {
 
     drawChart = function () {
 //        var _self = this;
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work', 11],
-          ['Eat', 2],
-          ['Commute', 2],
-          ['Watch TV', 2],
-          ['Sleep', 7]
-        ]);
-
         var options = {
-            title: 'My Daily Activities'
+            title: 'My Daily Activities',
+            colors: ['#FF0000', '#FE642E', '#FE9A2E', '#FACC2E', '#3ADF00'],
+            is3D: true
         };
-        
 
         for (var i = 0; i < rally.Stories.length; i++) {
-            var chart = new google.visualization.PieChart(document.getElementById('chartId'+rally.Stories[i].id));
+            var story = rally.Stories[i];
+            var chart = new google.visualization.PieChart(document.getElementById('chartId' + story.id));
+            var data = google.visualization.arrayToDataTable(story.Tasks);
+
+          
+
             chart.draw(data, options);
         }
     }
