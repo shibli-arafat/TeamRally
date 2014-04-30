@@ -1,7 +1,7 @@
 
 var teamRallyNS = teamRallyNS || {};
 
-teamRallyNS.Rally = function (mainTemplateContent,mainTemplateId) {
+teamRallyNS.Rally = function (mainTemplateContent, mainTemplateId) {
     this.Stories = new Array();
     this.MainTemplateId = mainTemplateId;
     this.MainTempalteContent = mainTemplateContent;
@@ -10,11 +10,50 @@ teamRallyNS.Rally = function (mainTemplateContent,mainTemplateId) {
 
 
 teamRallyNS.Rally.prototype = function () {
-    
-	// private method
-    var bindView = function () {	
-        $("#"+this.MainTempalteContent).html(
-        $("#"+this.MainTemplateId).render(this.Stories)
+    var loadSprints = function () {
+        //var converter = new teamRallyNS.FromRallyDataConverter();
+        $.ajax({
+            url: "https://" + _credential + "@rally1.rallydev.com/slm/webservice/v2.0/Iteration?fetch=true",
+            dataType: 'jsonp',
+            jsonp: 'jsonp',
+            async: false,
+            success: function (data, textStatus, jqXHR) {
+                toSprints(data);
+            },
+            error: function () {
+                alert("Error");
+                return null;
+            }
+        });
+    };
+
+    var toSprints = function (data) {
+        var sprints = new Array();
+        for (var i = 0; i < data.QueryResult.Results.length; i++) {
+            var sprint = new Object();
+            sprint.Name = data.QueryResult.Results[i].Name;
+            sprint.Id = data.QueryResult.Results[i].ObjectID;
+            sprint.Url = data.QueryResult.Results[i]._ref;
+            sprint.StartDate = data.QueryResult.Results[i].StartDate;
+            sprint.EndDate = data.QueryResult.Results[i].EndDate;
+            sprints.push(sprint);
+        }
+               
+        bindSprints(sprints);
+    };
+
+    var bindSprints = function(sprints)
+    {
+        $("#sprintSelector").html(
+         $("#SprintTemplate").render(sprints));
+        };
+    // private method
+    var bindView = function () {
+        var provider = new teamRallyNS.RallyDataProvider();
+        var newsprints = loadSprints();       
+
+        $("#" + this.MainTempalteContent).html(
+        $("#" + this.MainTemplateId).render(this.Stories)
 		);
     },
 
@@ -40,7 +79,7 @@ teamRallyNS.Rally.prototype = function () {
         }
     }
 
-    
+
     //Public Members
     return {
         bindView: bindView,

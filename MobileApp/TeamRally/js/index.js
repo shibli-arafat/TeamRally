@@ -18,7 +18,7 @@
  */
 var rally;
 //google.load("visualization", "1", { packages: ["corechart"] });
-
+var _credential = 'adnan.khair@adpeople.com:asdfgh1!';
 var app = {
     // Application Constructor
     initialize: function() {

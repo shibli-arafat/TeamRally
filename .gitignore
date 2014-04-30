@@ -1,0 +1,14 @@
+# git ignore file
+*.dll
+*.pdb
+*.user
+*.suo
+*.log
+obj/
+bin/
+
+MainSite/MainSiteView/Global/
+MainSite/MainSiteView/Viewstate/
+Advert/Advert.View/CoreTextEditor.swf
+/TestResults/DellShare.Global.TE.Tests_log.ldf
+/TestResults/DellShare.Global.TE.Tests.mdf
