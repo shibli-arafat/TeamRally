@@ -19,6 +19,7 @@ teamRallyNS.Rally.prototype = function () {
     },
 
     drawChart = function () {
+//        var _self = this;
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
           ['Work', 11],
@@ -31,11 +32,10 @@ teamRallyNS.Rally.prototype = function () {
         var options = {
             title: 'My Daily Activities'
         };
+        
 
-        var allChartContent = $("div[id^='chartId']");
-
-        for (var i = 0; i < allChartContent.length; i++) {
-            var chart = new google.visualization.PieChart(document.getElementById(allChartContent[i].id));
+        for (var i = 0; i < rally.Stories.length; i++) {
+            var chart = new google.visualization.PieChart(document.getElementById('chartId'+rally.Stories[i].id));
             chart.draw(data, options);
         }
     }
