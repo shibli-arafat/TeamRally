@@ -37,8 +37,8 @@
     <body>
          
         <div>  
-		<div style="width:20%; ">
-			<select name="sprintSelector" id="sprintSelector">
+		<div style="width:50%; ">
+			<select name="sprintSelector" id="sprintSelector" >
 				<option value="1">2073</option>
 				<option value="2">2072</option>
 				<option value="3">2071</option>
@@ -61,7 +61,12 @@
    </table>
 		  </div>
 		  <div id="Mine">
-			<h1>Mine</h1>
+			<table data-role="table" id="Table1" data-mode="columntoggle" class="ui-responsive" style="width:100%;">
+    
+            <tbody id='MineTable' >
+       
+             </tbody>
+            </table>
 		  </div>
 		</div>
 					
@@ -81,11 +86,26 @@
         <script id="mainTemplate" type="text/x-jsrender">
 		<tr>				
 		<td>
-            <div id="chartId{{:id}}" style="width: 100%; height: 100px;"></div>
+            <div id="chartId{{:id}}" style="width: 100%; height: 150px;"></div>
 		</td>
 							
 		</tr>
+        </script>
+        <script id="MineTemplate" type="text/x-jsrender">
+		
+         <tr>				
+		<td>            
+            {{>Name}}
+		</td>
+		<td>         
+            {{>Status}}   
+		</td>
+         <td>  
+             {{>Started}}             
+		</td>					
+		</tr>
 </script>
+
 		<script type="text/javascript">		  		    
 		    app.initialize();
 		   

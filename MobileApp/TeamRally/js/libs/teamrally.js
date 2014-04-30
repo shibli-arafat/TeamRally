@@ -26,9 +26,10 @@ teamRallyNS.Rally.prototype = function () {
             var story = rally.Stories[i];
 
             var options = {
-                title: story.title,
+                title: (i +1) + '. '+ story.title,
                 colors: ['#FF0000', '#FE642E', '#FE9A2E', '#FACC2E', '#3ADF00'],
-                legend: { position: 'bottom' } 
+                legend: { position: 'left', alignment: 'center' },
+                chartArea: { left: 0,width:"100%", height: "75%" }
 
             };
 

@@ -9,7 +9,7 @@ var stories = [
     Done: 5,
     Tasks: [
       ['Task', 'Hours per Day'],
-      ['Not Done', 11],
+      ['Open', 11],
       ['Progress', 2],
       ['Review', 2],
       ['Test', 2],
@@ -26,12 +26,12 @@ var stories = [
     ReadyToTestTasks: 4,
     Done: 5,
     Tasks: [
-       ['Task', 'Hours per Day'],
-       ['Not Done', 11],
-       ['In Progess', 2],
-       ['Review', 2],
-       ['Watch TV', 2],
-       ['Sleep', 7]
+      ['Task', 'Hours per Day'],
+      ['Open', 11],
+      ['Progress', 2],
+      ['Review', 2],
+      ['Test', 2],
+      ['Done', 7]
     ]
 
 },
@@ -45,11 +45,11 @@ var stories = [
     Done: 5,
     Tasks: [
       ['Task', 'Hours per Day'],
-      ['Work', 11],
-      ['Eat', 2],
-      ['Commute', 2],
-      ['Watch TV', 2],
-      ['Sleep', 7]
+      ['Open', 11],
+      ['Progress', 2],
+      ['Review', 2],
+      ['Test', 2],
+      ['Done', 7]
     ]
 
 }

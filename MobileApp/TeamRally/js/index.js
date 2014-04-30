@@ -26,6 +26,7 @@ var app = {
         rally = new teamRallyNS.Rally('mainTemplateContent', 'mainTemplate');
         rally.Stories = stories;
         rally.bindView();
+        
         google.load("visualization", "1", { packages: ["corechart"] });
         google.setOnLoadCallback(rally.drawChart,this);
 
