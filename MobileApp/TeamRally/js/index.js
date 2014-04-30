@@ -16,10 +16,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var rally;
+//google.load("visualization", "1", { packages: ["corechart"] });
+
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        rally = new teamRallyNS.Rally('mainTemplateContent', 'mainTemplate');
+        rally.Stories = stories;
+        rally.bindView();
+
+        //google.setOnLoadCallback(rally.drawChart);
+
     },
     // Bind Event Listeners
     //

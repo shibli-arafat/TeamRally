@@ -28,6 +28,7 @@
         <title>Team Rally</title>
     </head>
     <body>
+         
         <div>  
 		<div style="width:20%; ">
 			<select name="sprintSelector" id="sprintSelector">
@@ -49,11 +50,7 @@
      <thead>
        <tr>
          <th data-priority="2">Story</th>
-        <th data-priority="2">Open</th>
-		<th data-priority="2">In Dev</th>
-		<th data-priority="2">In Review</th>
-		<th data-priority="2">In Test</th>
-		<th data-priority="2">Done</th>
+       <th data-priority="2">Status</th>
 
        </tr>
      </thead>
@@ -76,7 +73,9 @@
 		<script type="text/javascript" src="js/libs/jquery.mobile-1.4.2.min.js"></script>
 		<script type="text/javascript" src="js/libs/jsrender.min.js"></script>
 		<script type="text/javascript" src="js/libs/teamrally.js"></script>
-		<script type="text/javascript" src="js/libs/templatesRally.js"></script>		
+		<script type="text/javascript" src="js/libs/templatesRally.js"></script>
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>		
+        <script type="text/javascript" src="js/libs/dummyData.js"></script>		
         <script type="text/javascript" src="js/index.js"></script>
         <script id="mainTemplate" type="text/x-jsrender">
 		<tr>
@@ -84,26 +83,18 @@
 		<td>
 		  {{>title}}
 		</td>
-			<td>
-		  {{>OpenTasks}}
-		</td>
-			<td>
-		  {{>InProgressTasks}}
-		</td>
-			<td>
-		  {{>ReadyToReviewTasks}}
-		</td>
-			<td>
-		  {{>ReadyToTestTasks}}
-		</td>
-			<td>
-		  {{>Done}}
+		<td>
+            <div id="chartId{{:id}}" style="width: 100px; height: 100px;"></div>
 		</td>
 							
 		</tr>
 </script>
-		<script type="text/javascript">
+		<script type="text/javascript">		  		    
 		    app.initialize();
+		    google.load("visualization", "1", { packages: ["corechart"] });
+		    google.setOnLoadCallback(rally.drawChart);
         </script>
+        
     </body>
 </html>
+

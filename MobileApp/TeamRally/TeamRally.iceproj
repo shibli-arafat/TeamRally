@@ -248,6 +248,7 @@
     <Content Include="css\themes\default\jquery.mobile.structure-1.4.2.min.css" />
     <Content Include="css\themes\default\jquery.mobile.theme-1.4.2.min.css" />
     <Content Include="index.html" />
+    <Content Include="js\libs\dummyData.js" />
     <Content Include="js\libs\jquery.js" />
     <Content Include="js\libs\jquery.mobile-1.4.2.min.js" />
     <Content Include="js\libs\jsrender.min.js" />
