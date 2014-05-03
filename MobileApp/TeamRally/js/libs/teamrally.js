@@ -38,8 +38,9 @@ teamRallyNS.Rally.prototype = function () {
             sprint.EndDate = data.QueryResult.Results[i].EndDate;
             sprints.push(sprint);
         }
-               
+        sprints.reverse();
         bindSprints(sprints);
+
     };
 
     var bindSprints = function(sprints)
@@ -49,9 +50,7 @@ teamRallyNS.Rally.prototype = function () {
         };
     // private method
     var bindView = function () {
-        var provider = new teamRallyNS.RallyDataProvider();
-        var newsprints = loadSprints();       
-
+        loadSprints();
         $("#" + this.MainTempalteContent).html(
         $("#" + this.MainTemplateId).render(this.Stories)
 		);
