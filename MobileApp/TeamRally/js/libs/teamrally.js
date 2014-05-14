@@ -54,14 +54,16 @@ teamRallyNS.Rally.prototype = function () {
         var _self = this;
        
         $("#sprintSelector").html(
-         $("#SprintTemplate").render(rally.Sprints));
-        $("#sprintSelector").val(rally.Sprints);
+        $("#SprintTemplate").render(rally.Sprints));
+        
+        $('#sprintSelector option:first-child').attr("selected", "selected");
     };
 
     var loadTasks = function ()
     {
         var _self = this;
         var iterationId = $('#' + rally.SprintSelector).val();
+        if (iterationId == '') return null;
         $.ajax({
             url: "https://" + _credential + "@rally1.rallydev.com/slm/webservice/v2.0/tasks?fetch=description,notes,taskindex,name,objectid,formattedid,owner,blocked,estimate,todo,actuals,state,status,qa,workproduct&query=(Iteration = /iteration/" + iterationId + ")&project=/project/16127913136&projectScopeUp=false&projectScopeDown=true&pagesize=1000",
             dataType: 'jsonp',

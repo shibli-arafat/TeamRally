@@ -102,8 +102,7 @@
         <!-- /content -->
         <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
             <ul data-role="listview">
-                <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
-                <li><a href="#panel-responsive-page2">Stories</a></li>
+                <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>                
                 <li><a href="#Adnan">Adnan</a></li>
                 <li><a href="#Shuvro">Shuvro</a></li>
                 <li><a href="#Asif">Asif</a></li>
@@ -227,7 +226,14 @@
         }
     </script>
       <script type="text/javascript">
-        app.initialize();
+          
+          app.initialize();
+          $(document).ready(function () {
+              initialize();
+              LoadViewBySprintId();
+              
+          });
+          
 
     </script>
   
