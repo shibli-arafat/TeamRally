@@ -25,16 +25,14 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+       
         rally = new teamRallyNS.Rally('mainTemplateContent', 'mainTemplate', 'sprintSelector');
         //rally.Stories = stories;
         rally.bindView();
         
        
-   
-        //google.load("visualization", "1", { packages: ["corechart"] });
-        //google.setOnLoadCallback(rally.drawChart,this);
-
-        //google.setOnLoadCallback(rally.drawChart);
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(initialize);
 
     },
     // Bind Event Listeners
