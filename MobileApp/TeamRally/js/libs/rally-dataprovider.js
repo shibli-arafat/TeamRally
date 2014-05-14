@@ -4,22 +4,7 @@ teamRallyNS.RallyDataProvider = function () {
 };
 
 teamRallyNS.RallyDataProvider.prototype = function (sprintNo) {
-    var loadStories = function () {
-        var converter = new teamRallyNS.FromRallyDataConverter();
-        $.ajax({
-            url: "https://" + _credential + "@rally1.rallydev.com/slm/webservice/v2.0/HierarchicalRequirement?query=(iteration.Name=\"" + sprintNo + "\")&fetch=true",
-            dataType: 'jsonp',
-            jsonp: 'jsonp',
-            success: function (data, textStatus, jqXHR) {
-                return converter.toStories(data);
-            },
-            error: function () {
-                alert("Error");
-                return null;
-            }
-        });
-    };
-
+  
     var loadSprints = function () {
         //var converter = new teamRallyNS.FromRallyDataConverter();
         $.ajax({
@@ -54,7 +39,7 @@ teamRallyNS.RallyDataProvider.prototype = function (sprintNo) {
 
     return {
         loadSprints: loadSprints,
-        loadStories: loadStories
+        
     };
 }();
 

@@ -19,16 +19,20 @@
 var rally;
 //google.load("visualization", "1", { packages: ["corechart"] });
 var _credential = 'adnan.khair@adpeople.com:asdfgh1!';
+
+
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        rally = new teamRallyNS.Rally('mainTemplateContent', 'mainTemplate');
-        rally.Stories = stories;
+        rally = new teamRallyNS.Rally('mainTemplateContent', 'mainTemplate', 'sprintSelector');
+        //rally.Stories = stories;
         rally.bindView();
         
-        google.load("visualization", "1", { packages: ["corechart"] });
-        google.setOnLoadCallback(rally.drawChart,this);
+       
+   
+        //google.load("visualization", "1", { packages: ["corechart"] });
+        //google.setOnLoadCallback(rally.drawChart,this);
 
         //google.setOnLoadCallback(rally.drawChart);
 

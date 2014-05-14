@@ -1,17 +1,21 @@
 
 var teamRallyNS = teamRallyNS || {};
 
-teamRallyNS.Rally = function (mainTemplateContent, mainTemplateId) {
+teamRallyNS.Rally = function (mainTemplateContent, mainTemplateId,sprintSelectorId) {
+    this.Sprints = new Array();
     this.Stories = new Array();
     this.MainTemplateId = mainTemplateId;
     this.MainTempalteContent = mainTemplateContent;
-
+    this.SprintSelector = sprintSelectorId;
+    
 };
 
 
 teamRallyNS.Rally.prototype = function () {
     var loadSprints = function () {
-        //var converter = new teamRallyNS.FromRallyDataConverter();
+        var _self = this;
+
+        //var converter = new teamRallyNS.FromRallyDataConverter();s
         $.ajax({
             url: "https://" + _credential + "@rally1.rallydev.com/slm/webservice/v2.0/Iteration?fetch=true",
             dataType: 'jsonp',
@@ -21,13 +25,15 @@ teamRallyNS.Rally.prototype = function () {
                 toSprints(data);
             },
             error: function () {
-                alert("Error");
+                alert("Error Sprint");
                 return null;
             }
         });
     };
 
+     
     var toSprints = function (data) {
+        var _self = this;
         var sprints = new Array();
         for (var i = 0; i < data.QueryResult.Results.length; i++) {
             var sprint = new Object();
@@ -39,25 +45,69 @@ teamRallyNS.Rally.prototype = function () {
             sprints.push(sprint);
         }
         sprints.reverse();
-        bindSprints(sprints);
-
+        _self.Sprints = sprints;
+        bindSprints();
+  };
+   
+    var bindSprints = function()
+    {
+        var _self = this;
+       
+        $("#sprintSelector").html(
+         $("#SprintTemplate").render(_self.Sprints));
+        $("#sprintSelector").val(_self.Sprints);
     };
 
-    var bindSprints = function(sprints)
+    var loadTasks = function ()
     {
-        $("#sprintSelector").html(
-         $("#SprintTemplate").render(sprints));
-        };
+        var _self = this;
+        var iterationId = $('#' + _self.SprintSelector).val();
+        $.ajax({
+            url: "https://" + _credential + "@rally1.rallydev.com/slm/webservice/v2.0/tasks?fetch=description,notes,taskindex,name,objectid,formattedid,owner,blocked,estimate,todo,actuals,state,status,qa,workproduct&query=(Iteration = /iteration/" + iterationId + ")&project=/project/16127913136&projectScopeUp=false&projectScopeDown=true&pagesize=1000",
+            dataType: 'jsonp',
+            jsonp: 'jsonp',
+            async: false,
+            success: function (data, textStatus, jqXHR) {
+                toTasks(data);
+            },
+            error: function () {
+                alert("Error Sprint");
+                return null;
+            }
+        });
+
+    };
+    var toTasks = function (data)
+    {
+        var tasks = new Array();
+        var stories = new Array();
+        for (var i = 0; i < data.QueryResult.Results.length; i++)
+        {
+            var task = new Object();
+            task.Name= data.QueryResult.Results[i].Name;
+            task.Status=data.QueryResult.Results[i].State;
+            task.Description = data.QueryResult.Results[i].Description;
+            if (data.QueryResult.Results[i].Owner != null)
+                task.OwnerName = data.QueryResult.Results[i].Owner._refObjectName;
+            else
+                task.OwnerName = '';
+            task.StoryName = data.QueryResult.Results[i].WorkProduct._refObjectName;
+            tasks.push(task);
+        }
+
+        alert(tasks.length);
+    }
+
     // private method
     var bindView = function () {
+        
+        var _self = this;
         loadSprints();
-        $("#" + this.MainTempalteContent).html(
-        $("#" + this.MainTemplateId).render(this.Stories)
-		);
-    },
 
+        
+    },
     drawChart = function () {
-//        var _self = this;
+        var _self = this;
         
 
         for (var i = 0; i < rally.Stories.length; i++) {
@@ -84,6 +134,8 @@ teamRallyNS.Rally.prototype = function () {
     //Public Members
     return {
         bindView: bindView,
-        drawChart: drawChart
+        drawChart: drawChart,
+        loadTasks: loadTasks,
+
     };
 }();

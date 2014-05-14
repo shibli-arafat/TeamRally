@@ -18,102 +18,139 @@
     under the License.
 -->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" type="text/css" href="css/themes/default/jquery.mobile-1.4.2.min.css" />
-        <title>Team Rally</title>
-         <style type="text/css">
-
-            .ui-table-columntoggle-btn
-{
-    display:none;
-}
-        </style>
-    </head>
-    <body>
-         
-        <div>  
-        <div style="width: 50%;">
-            <select name="sprintSelector" id="sprintSelector">
-                
-			</select>
-		</div>
-		<div data-role="tabs" id="tabs">
-		<div data-role="navbar">
-		<ul>
-			  <li><a href="#Team" data-ajax="false" class="ui-btn-active">Team</a></li>
-			  <li><a href="#Mine" data-ajax="false">Mine</a></li>			  
-			</ul>
-		  </div>
-		  <div id="Team" class="ui-body-d ui-content ">
-		<table data-role="table" id="storydata-table" data-mode="columntoggle" class="ui-responsive" style="width:100%;">
-    
-                    <tbody id='mainTemplateContent'>
-     </tbody>
-   </table>
-		  </div>
-		  <div id="Mine">
-			<table data-role="table" id="Table1" data-mode="columntoggle" class="ui-responsive" style="width:100%;">
-    
-            <tbody id='MineTable' >
-       
-             </tbody>
-            </table>
-		  </div>
-		</div>
-					
-			
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/themes/default/jquery.mobile-1.4.2.min.css" />
+    <title>Team Rally</title>
+    <style type="text/css">
+        .ui-table-columntoggle-btn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page" class="jqm-demos ui-responsive-panel" id="panel-responsive-page1" data-title="Panel responsive page" data-url="panel-responsive-page1">
+        <div data-role="header">
+            <h1>Panel responsive</h1>
+            <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+            <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
         </div>
-	
+        <!-- /header -->
+        <div role="main" class="ui-content jqm-content jqm-fullwidth">
+            <div>
+                <div style="width: 50%;">
+                    <select name="sprintSelector" id="sprintSelector" onchange="LoadViewBySprintId()">
+                    </select>
+                </div>
+                <div data-role="tabs" id="tabs">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#Team" data-ajax="false" class="ui-btn-active">Team</a></li>
+                            <li><a href="#Mine" data-ajax="false">Mine</a></li>
+                        </ul>
+                    </div>
+                    <div id="Team" class="ui-body-d ui-content ">
+                        <table data-role="table" id="storydata-table" data-mode="columntoggle" class="ui-responsive" style="width: 100%;">
+
+                            <tbody id='mainTemplateContent'>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="Mine">
+                        <table data-role="table" id="Table1" data-mode="columntoggle" class="ui-responsive" style="width: 100%;">
+
+                            <tbody id='MineTable'>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /content -->
+        <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+            <ul data-role="listview">
+                <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                <li><a href="#panel-responsive-page2">Stories</a></li>
+                <li><a href="#Adnan">Adnan</a></li>
+                <li><a href="#Shuvro">Shuvro</a></li>
+                <li><a href="#Asif">Asif</a></li>
+            </ul>
+        </div>
+        <!-- /panel -->
+        <div data-role="panel" data-position="right" data-display="reveal" data-theme="a" id="add-form">
+            <form class="userform">
+                <h2>Login</h2>
+                <label for="name">Username:</label>
+                <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
+                    <div class="ui-block-b"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Save</a></div>
+                </div>
+            </form>
+
+        </div>
+        <!-- /panel -->
+    </div>
+
+
     <script type="text/javascript">
         var _credential = 'adnan.khair@adpeople.com:asdfgh1!';
     </script>
-     
-        <script type="text/javascript" src="phonegap.js"></script>
-		<script type="text/javascript" src="js/libs/jquery.js"></script>		
-		<script type="text/javascript" src="js/libs/jquery.mobile-1.4.2.min.js"></script>
-		<script type="text/javascript" src="js/libs/jsrender.min.js"></script>
-		<script type="text/javascript" src="js/libs/teamrally.js"></script>
-		<script type="text/javascript" src="js/libs/templatesRally.js"></script>
-            <script type="text/javascript" src="https://www.google.com/jsapi"></script>		
-        <script type="text/javascript" src="js/libs/dummyData.js"></script>		
-        <script type="text/javascript" src="js/index.js"></script>
+
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/libs/jsrender.min.js"></script>
+    <script type="text/javascript" src="js/libs/teamrally.js"></script>
+    <script type="text/javascript" src="js/libs/templatesRally.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/libs/dummyData.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/libs/from-rally-dataconverter.js"></script>
     <script type="text/javascript" src="js/libs/rally-dataprovider.js"></script>
-        <script id="mainTemplate" type="text/x-jsrender">
-		<tr>				
-		<td>
-            <div id="chartId{{:id}}" style="width: 100%; height: 150px;"></div>
-		</td>
-							
-		</tr>
-        </script>
-        <script id="SprintTemplate" type="text/x-jsrender">
-		    <option value="{{:Url}}">{{>Name}}</option>
-        </script>
-        <script id="MineTemplate" type="text/x-jsrender">
-		
-         <tr>				
-		<td>            
-            {{>Name}}
-		</td>
-		<td>         
-            {{>Status}}   
-		</td>
-         <td>  
-             {{>Started}}             
-		</td>					
-		</tr>
-</script>
-		<script type="text/javascript">		  		    
-		    app.initialize();
-                      		   
-        </script>
-        
-    </body>
+    <script id="mainTemplate" type="text/x-jsrender">
+        <tr>
+            <td>
+                <div id="chartId{{:id}}" style="width: 100%; height: 150px;"></div>
+            </td>
+
+        </tr>
+    </script>
+    <script id="SprintTemplate" type="text/x-jsrender">
+        <option value="{{:Id}}">{{>Name}}</option>
+    </script>
+    <script id="MineTemplate" type="text/x-jsrender">
+
+        <tr>
+            <td>{{>Name}}
+            </td>
+            <td>{{>Status}}   
+            </td>
+            <td>{{>Started}}             
+            </td>
+        </tr>
+    </script>
+    <script type="text/javascript">
+        app.initialize();
+
+    </script>
+    <script type="text/javascript">
+
+        var LoadViewBySprintId = function () {
+            rally.loadTasks();
+
+        };
+    </script>
+
+</body>
 </html>
 
