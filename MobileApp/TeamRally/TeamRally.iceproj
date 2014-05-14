@@ -248,6 +248,9 @@
     <Content Include="css\themes\default\jquery.mobile.structure-1.4.2.min.css" />
     <Content Include="css\themes\default\jquery.mobile.theme-1.4.2.min.css" />
     <Content Include="index.html" />
+    <Content Include="index2.html">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="js\libs\dummyData.js" />
     <Content Include="js\libs\from-rally-dataconverter.js" />
     <Content Include="js\libs\jquery.js" />

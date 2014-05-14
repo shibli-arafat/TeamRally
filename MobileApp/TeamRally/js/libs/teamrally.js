@@ -86,7 +86,9 @@ teamRallyNS.Rally.prototype = function () {
             
             var task = new Object();
             task.Name = data.QueryResult.Results[i].Name;
-            task.Status = data.QueryResult.Results[i].c_Status.replace(/\s/g, '');
+            task.DisplayStatus = data.QueryResult.Results[i].c_Status;
+            if(data.QueryResult.Results[i].c_Status!=null || data.QueryResult.Results[i].c_Status!='undefined')
+                task.Status = data.QueryResult.Results[i].c_Status.replace(/\s/g, '');
             console.log(task.Status);
             task.Description = data.QueryResult.Results[i].Description;
             if (data.QueryResult.Results[i].Owner != null)
@@ -123,10 +125,16 @@ teamRallyNS.Rally.prototype = function () {
     };
     var bindStories = function () {
         var self = this;
+
+        $("#SprintDetail").html('Start Date: ' + $('#sprintSelector option:selected').attr('StartDate').substring(0, 10) + '<br> End Date: ' + $('#sprintSelector option:selected').attr('EndDate').substring(0, 10));
+      
         $('#mainTemplateContent').html(
         $('#mainTemplate').render(rally.Stories));
         
         $("#hiddenButton").click();
+
+        $('body').append(
+        $('#StoryPopUpTemplate').render(rally.Stories));
 
     };
 
@@ -146,9 +154,15 @@ teamRallyNS.Rally.prototype = function () {
 
         for (var i = 0; i < rally.Stories.length; i++) {
             var story = rally.Stories[i];
+            var storyDetail = 'Open :' + GetValue(story.TaskStausCounter["Open"])
+                              + ', In-Progress: ' + GetValue(story.TaskStausCounter["In-Development"])
+                              +  ', Review: ' + GetValue(story.TaskStausCounter["ReadyforReview"])
+                              +  ', Test: '+ GetValue(story.TaskStausCounter["ReadyforTest"])
+                              + ', Completed: '+ GetValue(story.TaskStausCounter["Completed"]); 
+
 
             var options = {
-                title: (i +1) + '. '+ story.Name,
+                title: storyDetail,
                 colors: ['#FF0000', '#FE642E', '#FE9A2E', '#FACC2E', '#3ADF00'],
                 legend: { position: 'left', alignment: 'center' },
                 chartArea: { left: 0,width:"100%", height: "75%" }
@@ -169,7 +183,16 @@ teamRallyNS.Rally.prototype = function () {
 
             chart.draw(data, options);
         }
+    },
+
+    GetValue = function (val)
+    {
+        if (!isNaN(val))
+            return val;
+        else
+            return 0;
     }
+
 
 
     //Public Members
