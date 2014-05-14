@@ -87,9 +87,11 @@ teamRallyNS.Rally.prototype = function () {
             var task = new Object();
             task.Name = data.QueryResult.Results[i].Name;
             task.DisplayStatus = data.QueryResult.Results[i].c_Status;
-            if(data.QueryResult.Results[i].c_Status!=null || data.QueryResult.Results[i].c_Status!='undefined')
+            //console.log(data.QueryResult.Results[i].c_Status);
+            //console.log(task.Name);
+            if(data.QueryResult.Results[i].c_Status!=null && data.QueryResult.Results[i].c_Status!='undefined')
                 task.Status = data.QueryResult.Results[i].c_Status.replace(/\s/g, '');
-            console.log(task.Status);
+            
             task.Description = data.QueryResult.Results[i].Description;
             if (data.QueryResult.Results[i].Owner != null)
                 task.OwnerName = data.QueryResult.Results[i].Owner._refObjectName;
@@ -126,7 +128,7 @@ teamRallyNS.Rally.prototype = function () {
     var bindStories = function () {
         var self = this;
 
-        $("#SprintDetail").html('Start Date: ' + $('#sprintSelector option:selected').attr('StartDate').substring(0, 10) + '<br> End Date: ' + $('#sprintSelector option:selected').attr('EndDate').substring(0, 10));
+        $(".sprint-detail").html('Start Date: ' + $('#sprintSelector option:selected').attr('StartDate').substring(0, 10) + '<br> End Date: ' + $('#sprintSelector option:selected').attr('EndDate').substring(0, 10));        
       
         $('#mainTemplateContent').html(
         $('#mainTemplate').render(rally.Stories));
