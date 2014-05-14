@@ -59,7 +59,8 @@
                 <div data-role="tabs" id="tabs">
                     <div data-role="navbar">
                         <ul>
-                            <li><a href="#Team" data-ajax="false" class="ui-btn-active">Team</a></li>
+                            <li><a href="#Burndown" data-ajax="false" class="ui-btn-active">Burndown</a></li>
+                            <li><a href="#Team" data-ajax="false" >Team</a></li>
                             <li><a href="#Mine" data-ajax="false">Mine</a></li>
                         </ul>
                     </div>
@@ -69,6 +70,14 @@
       
                     </div>
 
+                    <div id="Burndown">
+                        <table data-role="table" id="Table2" data-mode="columntoggle" class="ui-responsive" style="width: 100%;">
+
+                            <tbody id='BurndownTable'>
+                                <iframe src="https://rally1.rallydev.com/#/16127913136d/dashboard?expandApp=18979280252" style="height:500px;width:100%;"></iframe>
+                            </tbody>
+                        </table>
+                    </div>
                     <div id="Team" class="ui-body-d ui-content ">
 
                         <table data-role="table" id="storydata-table" data-mode="columntoggle" class="ui-responsive" style="width: 100%;">
@@ -84,6 +93,7 @@
                             </tbody>
                         </table>
                     </div>
+                    
                 </div>
 
 
